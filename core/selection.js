@@ -142,8 +142,12 @@ class Selection {
         }
         rect = range.getBoundingClientRect();
       } else {
-        rect = leaf.domNode.getBoundingClientRect();
-        if (offset > 0) side = 'right';
+        try {
+          rect = leaf.domNode.getBoundingClientRect();
+          if (offset > 0) side = 'right';
+        } catch (ignored) {
+          return null;
+        }
       }
       return {
         bottom: rect.top + rect.height,
