@@ -146,7 +146,14 @@ class Selection {
           rect = leaf.domNode.getBoundingClientRect();
           if (offset > 0) side = 'right';
         } catch (ignored) {
-          return null;
+          return {
+            bottom: 0,
+            height: 0,
+            left: 0,
+            right: 0,
+            top: 0,
+            width: 0
+          };
         }
       }
       return {
